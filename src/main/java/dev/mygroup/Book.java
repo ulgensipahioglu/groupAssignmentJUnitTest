@@ -34,6 +34,7 @@ public class Book {
 
     public void borrowBook() {
         this.borrowed = true;
+        this.daysBorrowed = 0;
     }
 
     public void returnBook() {

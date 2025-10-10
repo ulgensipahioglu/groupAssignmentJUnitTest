@@ -20,15 +20,34 @@ public class Library {
     }
 
     public ArrayList<Book> borrowBook(String title) {
+        Book book;
+        for (int i = 0; i < borrowedBooksList.size(); i++) {
+            book = borrowedBooksList.get(i);
 
+            if (book.getDaysBorrowed() == 0) {
+                System.out.println("Sorry!You can borrow one book per day.");
+                return borrowedBooksList;
+            }
+            if (book.getName().contains(title)) {
+                System.out.println("Sorry!You have already borrowed this book.");
+                return borrowedBooksList;
+            }
+            if (borrowedBooksList.size() >= 5) {
+                System.out.println("Sorry!You have already borrowed 5 books.");
+                return borrowedBooksList;
+            }
+
+        }
         for (int i = 0; i < booksInStockList.size(); i++) {
-            Book book = booksInStockList.get(i);
+            book = booksInStockList.get(i);
             if (book.getName().equalsIgnoreCase(title)) {
-                // book.borrowBook();
+                book.borrowBook();
                 this.borrowedBooksList.add(book);
+                listAvailableBooks().remove(i);
                 break;
             }
         }
+        System.out.println("You have successfully borrowed the book " + title + ".");
         System.out.println();
 
         return borrowedBooksList;
@@ -114,8 +133,11 @@ public class Library {
     }
 
     public void advanceDay() {
-        for (int i = 0; i < booksInStockList.size(); i++) {
+        /*for (int i = 0; i < booksInStockList.size(); i++) {
             booksInStockList.get(i).advanceDay();
+        }*/
+        for (int i = 0; i < borrowedBooksList.size(); i++) {
+            borrowedBooksList.get(i).advanceDay();
         }
     }
 
@@ -146,6 +168,15 @@ public class Library {
         }
         for (int i = 0; i < 5; i++) {
             Book book = new Book("Tempelriddaren", "Historical Fiction", "Jan Guillou");
+            booksInStockList.add(book);
+        }
+        for (int i = 0; i < 3; i++) {
+            Book book = new Book("The Great Gatsby", "Classic", "F. Scott Fitzgerald");
+            booksInStockList.add(book);
+        }
+
+        for (int i = 0; i < 2; i++) {
+            Book book = new Book("The Lord of the Rings", "Fantasy", "J.R.R. Tolkien");
             booksInStockList.add(book);
         }
     }

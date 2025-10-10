@@ -9,10 +9,11 @@ public class Program {
 
     public void run() {
         library = new Library();
-
-        while (true) {
+        Boolean exit = false;
+        while (!exit) {
             System.out.println("Welcome to the library! \n"
                     + "Press B to borrow a book \n"
+                    + "Press D to advance day \n"
                     + "Press R to return a book \n"
                     + "Press L to list all currently borrowed books \n"
                     + "Press A to list all currently borrowed books by an author \n"
@@ -25,6 +26,10 @@ public class Program {
             switch (input.toUpperCase()) {
                 case "B":
                     borrowBook();
+                    // library.advanceDay();
+                    break;
+                case "D":
+                    library.advanceDay();
                     break;
                 case "R":
                     returnBook();
@@ -41,12 +46,12 @@ public class Program {
                 case "E":
                     extendTime();
                 case "Q":
+                    exit = true;
                     break;
                 default:
                     break;
             }
-
-            library.advanceDay();
+            // library.advanceDay();
         }
     }
 
