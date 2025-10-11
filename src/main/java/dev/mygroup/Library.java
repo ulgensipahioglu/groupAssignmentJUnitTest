@@ -1,6 +1,9 @@
 package dev.mygroup;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Library {
@@ -62,6 +65,8 @@ public class Library {
             if (book.getName().equalsIgnoreCase(title)) {
                 int fee = book.checkLateFee();
                 totalLateFee += fee;
+                borrowedBooksList.remove(i);
+                listAvailableBooks().add(book);
             }
         }
         System.out.println("You owe us " + totalLateFee + " kr in late fees.");
@@ -142,6 +147,7 @@ public class Library {
     }
 
     public ArrayList<Book> listAvailableBooks() {
+        Collections.sort(booksInStockList, Comparator.comparing(Book::getName));
         for (int i = 0; i < booksInStockList.size(); i++) {
             System.out.println("Title: " + booksInStockList.get(i).getName());
         }
@@ -150,27 +156,27 @@ public class Library {
     }
 
     private void stockLibrary() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) { //5
             Book book = new Book("Harry Potter", "Fantasy", "J.K Rowling");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 2; i++) { //10
             Book book = new Book("Hitchhiker's guide to the galaxy", "Sci-Fi", "Douglas Adams");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("It ends with us", "Romance", "Colleen Hoover");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("Ondskan", "Fictional Autobiography", "Jan Guillou");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("Tempelriddaren", "Historical Fiction", "Jan Guillou");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("The Great Gatsby", "Classic", "F. Scott Fitzgerald");
             booksInStockList.add(book);
         }

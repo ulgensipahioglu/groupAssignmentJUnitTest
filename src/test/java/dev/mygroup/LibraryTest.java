@@ -61,7 +61,6 @@ public class LibraryTest {
         int expextedAvailableStockBooks = library.listAvailableBooks().size() - 1;
         ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
         for (int i = 0; i < borrowBookList.size(); i++) {
-
             Book book = borrowBookList.get(i);
             if (book.getName().equalsIgnoreCase("Harry Potter") && book.isBorrowed()) {
                 actualAvailableBook = library.listAvailableBooks().size();
@@ -101,13 +100,45 @@ public class LibraryTest {
         Library library = new Library();
 
         ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.advanceDay();
         library.borrowBook("Hitchhiker's guide to the galaxy");
+        library.advanceDay();
         library.borrowBook("It ends with us");
+        library.advanceDay();
         library.borrowBook("Ondskan");
+        library.advanceDay();
         library.borrowBook("Tempelriddaren");
+        library.advanceDay();
         library.borrowBook("The Great Gatsby");
         int borrowdBooklistSize = borrowBookList.size();
         assertTrue(borrowdBooklistSize <= 5);
+    }
+
+    @Test
+    public void testUserCanRetrunBookAsManyBooksPerDay() {
+        Library library = new Library();
+        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.advanceDay();
+        library.borrowBook("Hitchhiker's guide to the galaxy");
+        library.advanceDay();
+        library.borrowBook("It ends with us");
+
+        int borrowedbefore = borrowBookList.size();
+        int availableBefore = library.listAvailableBooks().size();
+
+        int count = 0;
+        library.returnBook("Harry Potter");
+        count++;
+        library.returnBook("Hitchhiker's guide to the galaxy");
+        count++;
+        library.returnBook("It ends with us");
+        count++;
+
+        int borrowedAfter = borrowBookList.size();
+        int availableAfter = library.listAvailableBooks().size();
+
+        assertTrue((borrowedAfter == borrowedbefore - count)
+                && (availableAfter == availableBefore + count));
     }
 
     @Test
