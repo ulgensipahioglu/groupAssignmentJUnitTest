@@ -142,6 +142,22 @@ public class LibraryTest {
     }
 
     @Test
+    public void testFineAppliedAfterSevenDays() {
+        Library library = new Library();
+        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+
+        int count = 0;
+        for (int i = 1; i < 10; i++) {
+            library.advanceDay();
+            count++;
+        }
+
+        int lateFee = library.returnBook("Harry Potter");
+        int lateDays = count - 6;
+        assertTrue(lateFee == lateDays * 20);
+    }
+
+    @Test
     public void testExtendTime() {
 
     }

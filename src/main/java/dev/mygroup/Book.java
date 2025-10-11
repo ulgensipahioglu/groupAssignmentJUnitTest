@@ -18,8 +18,9 @@ public class Book {
 
     public int checkLateFee() {
         if (daysBorrowed >= 7) {
+            int lateDays = daysBorrowed - 6;
             System.out.println("The book is " + daysBorrowed + " days late");
-            return daysBorrowed * 20;
+            return lateDays * 20;
         }
         return 0;
     }
