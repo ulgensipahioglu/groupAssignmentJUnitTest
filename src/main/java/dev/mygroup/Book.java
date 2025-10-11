@@ -25,9 +25,37 @@ public class Book {
         return 0;
     }
 
+    /*
+     * public int checkLateFee() {
+    // Calculate the number of days the book is late
+    // The first 7 days are free
+    int lateDays = daysBorrowed - 7;
+
+    // Only apply a late fee if the book is overdue
+    if (lateDays > 0) {
+        // Print how many days the book is late
+        System.out.println("The book is " + lateDays + " days late");
+
+        // Charge 20 kr per late day
+        return lateDays * 20;
+    }
+
+    // No fee if the book is borrowed for 7 days or less
+    return 0;
+}
+     */
+
     public void extendTime() {
         this.daysBorrowed += -7;
     }
+
+    /*
+     * public void extendTime() {
+    // Increase the number of borrowed days by 7
+    this.daysBorrowed += 7;
+}
+     */
+
 
     public void advanceDay() {
         this.daysBorrowed++;
