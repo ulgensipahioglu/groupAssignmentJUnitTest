@@ -30,7 +30,7 @@ public class BookTest {
         book.borrowBook();
         assertTrue(book.isBorrowed());  // after borrow
         book.borrowBook();              // try again
-        assertTrue(book.isBorrowed());  // still borrowed (no change)
+        assertTrue(book.isBorrowed());  // still borrowed but a book that has been borrowed before cannot be borrowed again.
 
     }
 
