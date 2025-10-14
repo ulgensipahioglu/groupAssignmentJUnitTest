@@ -49,14 +49,6 @@ public class Book {
         this.daysBorrowed += -7;
     }
 
-    /*
-     * public void extendTime() {
-    // Increase the number of borrowed days by 7
-    this.daysBorrowed += 7;
-}
-     */
-
-
     public void advanceDay() {
         this.daysBorrowed++;
     }
