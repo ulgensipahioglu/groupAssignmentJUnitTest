@@ -26,7 +26,6 @@ public class Library {
         Book book;
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             book = borrowedBooksList.get(i);
-
             if (book.getDaysBorrowed() == 0) {
                 System.out.println("Sorry!You can borrow one book per day.");
                 return borrowedBooksList;
@@ -39,20 +38,23 @@ public class Library {
                 System.out.println("Sorry!You have already borrowed 5 books.");
                 return borrowedBooksList;
             }
-
         }
+        boolean found = false;
         for (int i = 0; i < booksInStockList.size(); i++) {
             book = booksInStockList.get(i);
             if (book.getName().equalsIgnoreCase(title)) {
+                found = true;
                 book.borrowBook();
                 this.borrowedBooksList.add(book);
-                listAvailableBooks().remove(i);
+                this.booksInStockList.remove(i);
+                System.out.println("You have successfully borrowed the book " + title + ".");
                 break;
             }
         }
-        System.out.println("You have successfully borrowed the book " + title + ".");
+        if (!found) {
+            System.out.println("Select book from the above list.");
+        }
         System.out.println();
-
         return borrowedBooksList;
     }
 
@@ -66,12 +68,12 @@ public class Library {
                 int fee = book.checkLateFee();
                 totalLateFee += fee;
                 borrowedBooksList.remove(i);
-                listAvailableBooks().add(book);
+                booksInStockList.add(book);
+                break;
             }
         }
         System.out.println("You owe us " + totalLateFee + " kr in late fees.");
         System.out.println();
-
         return totalLateFee;
     }
 
@@ -102,7 +104,6 @@ public class Library {
 
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
-
             if (book.getName().equalsIgnoreCase(title)) {
                 book.extendTime();
                 System.out.println("You have successfully extended time for this book '" + book.getName() + "' today.");
@@ -149,12 +150,13 @@ public class Library {
     }
 
     public void advanceDay() {
-        /*for (int i = 0; i < booksInStockList.size(); i++) {
-            booksInStockList.get(i).advanceDay();
-        }*/
+        int currentDay = 0;
         for (int i = 0; i < borrowedBooksList.size(); i++) {
+            Book book = borrowedBooksList.get(i);
             borrowedBooksList.get(i).advanceDay();
+            currentDay = book.getDaysBorrowed();
         }
+        System.out.println("Date has been updated successfully.Current date: " + currentDay);
     }
 
     public ArrayList<Book> listAvailableBooks() {

@@ -11,6 +11,11 @@ public class LibraryTest {
     @Test
     public void testAdvanceDay() {
 
+        Library library = new Library();
+        ArrayList<Book> borrowedBookList = library.borrowBook("Harry Potter");
+        library.advanceDay();
+        int currentDay = borrowedBookList.get(0).getDaysBorrowed();
+        assertTrue(currentDay == 1);
     }
 
     @Test
@@ -146,14 +151,12 @@ public class LibraryTest {
         Library library = new Library();
         ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
 
-        int count = 0;
-        for (int i = 1; i < 10; i++) {
+        for (int i = 0; i < 9; i++) {
             library.advanceDay();
-            count++;
         }
 
         int lateFee = library.returnBook("Harry Potter");
-        int lateDays = count - 6;
+        int lateDays = borrowBookList.get(0).getDaysBorrowed() - 6;
         assertTrue(lateFee == lateDays * 20);
     }
 
@@ -161,11 +164,10 @@ public class LibraryTest {
     public void testExtendFunctionResetsBorrowedDaysToZero() {
         Library library = new Library();
         ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
-        library.advanceDay();
-        library.advanceDay();
-        library.advanceDay();
-        library.advanceDay();
-        library.advanceDay();
+
+        for (int i = 0; i < 6; i++) {
+            library.advanceDay();
+        }
 
         int day = library.extendTime("Harry Potter");
         assertTrue(day == 0);

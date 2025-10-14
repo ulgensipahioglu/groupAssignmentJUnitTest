@@ -26,7 +26,6 @@ public class Program {
             switch (input.toUpperCase()) {
                 case "B":
                     borrowBook();
-                    // library.advanceDay();
                     break;
                 case "D":
                     library.advanceDay();
