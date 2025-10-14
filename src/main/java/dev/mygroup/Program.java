@@ -45,6 +45,7 @@ public class Program {
                     break;
                 case "E":
                     extendTime();
+                    break;
                 case "Q":
                     exit = true;
                     break;

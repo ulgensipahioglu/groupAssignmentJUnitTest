@@ -42,9 +42,9 @@ public class Book {
     return 0;                       // No fee if the book is borrowed for 7 days or less
 }
      */
-
     public void extendTime() {
-        this.daysBorrowed += -7;
+        //this.daysBorrowed += -7;
+        this.daysBorrowed = 0;
     }
 
     /*
@@ -52,14 +52,13 @@ public class Book {
         this.daysBorrowed += 7; // add 7 days
 }
      */
-
     public void advanceDay() {
         this.daysBorrowed++;
     }
 
     public void borrowBook() {
-             this.borrowed = true;
-             this.daysBorrowed = 0;
+        this.borrowed = true;
+        this.daysBorrowed = 0;
     }
 
     /*
@@ -69,7 +68,6 @@ public class Book {
         this.daysBorrowed = 0;
             }
      */
-
     public void returnBook() {
         this.borrowed = false;
     }
@@ -81,7 +79,6 @@ public class Book {
         }
     }
      */
-
     public String getName() {
         return name;
     }

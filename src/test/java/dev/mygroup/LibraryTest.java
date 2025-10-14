@@ -158,6 +158,20 @@ public class LibraryTest {
     }
 
     @Test
+    public void testExtendFunctionResetsBorrowedDaysToZero() {
+        Library library = new Library();
+        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.advanceDay();
+        library.advanceDay();
+        library.advanceDay();
+        library.advanceDay();
+        library.advanceDay();
+
+        int day = library.extendTime("Harry Potter");
+        assertTrue(day == 0);
+    }
+
+    @Test
     public void testExtendTime() {
 
     }

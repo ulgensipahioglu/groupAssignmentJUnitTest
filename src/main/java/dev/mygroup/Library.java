@@ -76,6 +76,7 @@ public class Library {
     }
 
     public ArrayList<Book> listBorrowedBooks(boolean includeDaysBorrowed) {
+        Collections.sort(borrowedBooksList, Comparator.comparing(Book::getDaysBorrowed).reversed());
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
             System.out.print("Title: " + book.getName());
@@ -93,8 +94,18 @@ public class Library {
 
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
+            if (book.getDaysBorrowed() == 0) {
+                System.out.println("Sorry!You can not extend this book today because you have already borrowed a book today.");
+                return book.getDaysBorrowed();
+            }
+        }
+
+        for (int i = 0; i < borrowedBooksList.size(); i++) {
+            Book book = borrowedBooksList.get(i);
+
             if (book.getName().equalsIgnoreCase(title)) {
                 book.extendTime();
+                System.out.println("You have successfully extended time for this book '" + book.getName() + "' today.");
                 return book.getDaysBorrowed();
             }
         }
