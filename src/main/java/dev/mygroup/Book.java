@@ -28,20 +28,18 @@ public class Book {
     /*
      * public int checkLateFee() {
     // Calculate the number of days the book is late
-    // The first 7 days are free
-    int lateDays = daysBorrowed - 7;
+    
+    int lateDays = daysBorrowed - 7; // The first 7 days are free
 
-    // Only apply a late fee if the book is overdue
-    if (lateDays > 0) {
+    if (lateDays > 0) {             // Only apply a late fee if the book is overdue
+
         // Print how many days the book is late
         System.out.println("The book is " + lateDays + " days late");
 
-        // Charge 20 kr per late day
-        return lateDays * 20;
+        return lateDays * 20;       // Charge 20 kr per late day
     }
 
-    // No fee if the book is borrowed for 7 days or less
-    return 0;
+    return 0;                       // No fee if the book is borrowed for 7 days or less
 }
      */
 
@@ -49,18 +47,40 @@ public class Book {
         this.daysBorrowed += -7;
     }
 
+    /*
+     * public void extendTime() {
+        this.daysBorrowed += 7; // add 7 days
+}
+     */
+
     public void advanceDay() {
         this.daysBorrowed++;
     }
 
     public void borrowBook() {
-        this.borrowed = true;
-        this.daysBorrowed = 0;
+             this.borrowed = true;
+             this.daysBorrowed = 0;
     }
+
+    /*
+     * public void borrowBook() {
+     * if (!this.borrowed) { // If the book is not borrowed, you can borrowed
+     *  this.borrowed = true;
+        this.daysBorrowed = 0;
+            }
+     */
 
     public void returnBook() {
         this.borrowed = false;
     }
+
+    /*
+     *     public void returnBook() {
+        if (this.borrowed) {  // If the book is borrowed, you can return
+            this.borrowed = false;
+        }
+    }
+     */
 
     public String getName() {
         return name;
