@@ -139,6 +139,17 @@ public class LibraryTest {
 
     // 3. For every day the book is late, the user has to pay a fine of 20 kr. 
     @Test
+    public void testBorrowBookFor7DaysStraight() {
+        Library library = new Library();
+        library.borrowBook("Harry Potter");
+        for (int i = 0; i < 7; i++) {
+            library.advanceDay();
+        }
+        int lateFee = library.returnBook("Harry Potter");
+        assertTrue(lateFee == 0);
+    }
+
+    @Test
     public void testFineAppliedAfterSevenDays() {
         Library library = new Library();
         library.borrowBook("Harry Potter");

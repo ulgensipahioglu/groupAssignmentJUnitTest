@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.14" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.063" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="jpda.address" value="64523"/>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
@@ -11,15 +10,14 @@
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="Europe/Stockholm"/>
-    <property name="forkMode" value="once"/>
     <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire13805844748848584824\surefirebooter-20251015102404226_3.jar C:\Users\Dator\AppData\Local\Temp\surefire13805844748848584824 2025-10-15T10-24-04_095-jvmRun1 surefire-20251015102404226_1tmp surefire_0-20251015102404226_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645\surefirebooter-20251015130325368_3.jar C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645 2025-10-15T13-03-25_259-jvmRun1 surefire-20251015130325368_1tmp surefire_0-20251015130325368_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="dev.mygroup.LibraryTest#testUserShouldBorrowBookFromStockList"/>
+    <property name="test" value="dev.mygroup.LibraryTest#testBorrowBookFor7DaysStraight"/>
     <property name="surefire.test.class.path" value="C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\test-classes;C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\classes;C:\Users\Dator\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Dator\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Dator"/>
@@ -33,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire13805844748848584824\surefirebooter-20251015102404226_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645\surefirebooter-20251015130325368_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -44,7 +42,6 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="jpda.listen" value="true"/>
     <property name="maven.ext.class.path" value="C:\Users\Dator\.vscode\extensions\oracle.oracle-java-24.1.2\nbcode\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="localRepository" value="C:\Users\Dator\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
@@ -62,11 +59,21 @@
     <property name="java.vm.version" value="21.0.6+8-LTS-188"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
-    <property name="maven.surefire.debug" value="-agentlib:jdwp=transport=dt_socket,server=n,address=64523"/>
   </properties>
-  <testcase name="testUserShouldBorrowBookFromStockList" classname="dev.mygroup.LibraryTest" time="0.021">
-    <system-out><![CDATA[Select book from the above list.
+  <testcase name="testBorrowBookFor7DaysStraight" classname="dev.mygroup.LibraryTest" time="0.019">
+    <system-out><![CDATA[You have successfully borrowed the book Harry Potter.
 
+Date has been updated successfully.
+Date has been updated successfully.
+Date has been updated successfully.
+Date has been updated successfully.
+Date has been updated successfully.
+Date has been updated successfully.
+Date has been updated successfully.
+Title: Harry Potter
+
+The book is 0 days late
+Your has been returned the book and you owe us 0 kr in late fees.
 
 ]]></system-out>
   </testcase>
