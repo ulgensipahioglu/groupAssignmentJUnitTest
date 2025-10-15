@@ -1,8 +1,6 @@
 package dev.mygroup;
 
-import java.util.ArrayList;
-
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -12,34 +10,36 @@ public class LibraryTest {
     public void testAdvanceDay() {
 
         Library library = new Library();
-        ArrayList<Book> borrowedBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
         library.advanceDay();
-        int currentDay = borrowedBookList.get(0).getDaysBorrowed();
+        int currentDay = library.listBorrowedBooks(false).get(0).getDaysBorrowed();
         assertTrue(currentDay == 1);
     }
 
     @Test
     public void testUserCanBorrowOneBookPerDay() {
         Library library = new Library();
-        ArrayList<Book> borrowedBookList = library.borrowBook("Harry Potter");
-        for (int i = 0; i < borrowedBookList.size(); i++) {
-            Book book = borrowedBookList.get(i);
+        library.borrowBook("Harry Potter");
+        int totalBorrowedBook = library.listBorrowedBooks(false).size();
+        for (int i = 0; i < totalBorrowedBook; i++) {
+            Book book = library.listBorrowedBooks(false).get(i);
             if (book.getDaysBorrowed() == 0) {
-                borrowedBookList = library.borrowBook("Hitchhiker's guide to the galaxy");
+                library.borrowBook("Hitchhiker's guide to the galaxy");
             }
         }
-        assertTrue(borrowedBookList.size() == 1);
+        assertTrue(totalBorrowedBook == 1);
     }
 
     @Test
     public void testBorrowBookAddsToBorrowedList() {
         Library library = new Library();
-        ArrayList<Book> borrowed = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
+        int totalBorrowedBook = library.listBorrowedBooks(false).size();
         boolean found = false;
-        for (int i = 0; i < borrowed.size(); i++) {
-            if (borrowed.get(i).getName().equalsIgnoreCase("Harry Potter")) {
+        for (int i = 0; i < totalBorrowedBook; i++) {
+            if (library.listBorrowedBooks(false).get(i).getName().equalsIgnoreCase("Harry Potter")) {
                 found = true;
-                break; // Stop searching once found
+                break;
             }
         }
         assertTrue(found);
@@ -48,10 +48,11 @@ public class LibraryTest {
     @Test
     public void testMarkBookAsBorrowed() {
         Library library = new Library();
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
+        int totalBorrowedBook = library.listBorrowedBooks(false).size();
         boolean marked = false;
-        for (int i = 0; i < borrowBookList.size(); i++) {
-            Book book = borrowBookList.get(i);
+        for (int i = 0; i < totalBorrowedBook; i++) {
+            Book book = library.listBorrowedBooks(false).get(i);
             if (book.getName().equalsIgnoreCase("Harry Potter") && book.isBorrowed()) {
                 marked = true;
             }
@@ -62,49 +63,43 @@ public class LibraryTest {
     @Test
     public void testBooksInStockListSouldDecreaseDuringBorrowing() {
         Library library = new Library();
-        int actualAvailableBook = 0;
-        int expextedAvailableStockBooks = library.listAvailableBooks().size() - 1;
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
-        for (int i = 0; i < borrowBookList.size(); i++) {
-            Book book = borrowBookList.get(i);
+        int availableBookListBeforeBorrow = library.listAvailableBooks().size();
+        int availableBookListAfterBorrow = 0;
+        library.borrowBook("Harry Potter");
+        int totalBorrowedBook = library.listBorrowedBooks(false).size();
+        for (int i = 0; i < totalBorrowedBook; i++) {
+            Book book = library.listBorrowedBooks(false).get(i);
             if (book.getName().equalsIgnoreCase("Harry Potter") && book.isBorrowed()) {
-                actualAvailableBook = library.listAvailableBooks().size();
+                availableBookListAfterBorrow = library.listAvailableBooks().size();
             }
-            Assert.assertEquals(expextedAvailableStockBooks, actualAvailableBook);
+            assertTrue(availableBookListAfterBorrow == availableBookListBeforeBorrow - 1);
         }
     }
 
     @Test
     public void testUserCannotBorrowSameBookTitleAgain() {
         Library library = new Library();
-        ArrayList<Book> borrowBookList = library.borrowBook("Ondskan");
-        boolean ableToBorrowBook = true;
-        String title = "Ondskan";//"Harry Potter",Ondskan;
-        int borrowdBooklistSize = borrowBookList.size();
+        library.borrowBook("Ondskan");
+        int borrowedBefore = library.listBorrowedBooks(false).size();
+        library.advanceDay();
+        library.borrowBook("Ondskan");
+        int borrowedAfter = library.listBorrowedBooks(false).size();
+        assertEquals(borrowedAfter, borrowedBefore);
+    }
 
-        for (int i = 0; i < borrowBookList.size(); i++) {
-            Book book = borrowBookList.get(i);
-            if (book.getName().contains(title)) {
-                library.borrowBook(title);
-                int countBorrowedBookAfter = borrowBookList.size();
-                if (borrowdBooklistSize < countBorrowedBookAfter) {
-                    ableToBorrowBook = false;
-                    break;
-                }
-                if (borrowdBooklistSize == countBorrowedBookAfter) {
-                    ableToBorrowBook = true;
-                    break;
-                }
-            }
-        }
-        assertTrue(ableToBorrowBook);
+    @Test
+    public void testUserShouldBorrowBookFromStockList() {
+        Library library = new Library();
+        library.borrowBook("Abcde");
+        int borrowedBook = library.listBorrowedBooks(false).size();
+        assertTrue(borrowedBook == 0);
     }
 
     @Test
     public void testUserCannotBorrowBookMoreThan5Times() {
         Library library = new Library();
 
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
         library.advanceDay();
         library.borrowBook("Hitchhiker's guide to the galaxy");
         library.advanceDay();
@@ -115,55 +110,51 @@ public class LibraryTest {
         library.borrowBook("Tempelriddaren");
         library.advanceDay();
         library.borrowBook("The Great Gatsby");
-        int borrowdBooklistSize = borrowBookList.size();
+        int borrowdBooklistSize = library.listBorrowedBooks(false).size();
         assertTrue(borrowdBooklistSize <= 5);
     }
 
     @Test
     public void testUserCanRetrunBookAsManyBooksPerDay() {
         Library library = new Library();
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
         library.advanceDay();
         library.borrowBook("Hitchhiker's guide to the galaxy");
         library.advanceDay();
         library.borrowBook("It ends with us");
 
-        int borrowedbefore = borrowBookList.size();
+        int borrowedbefore = library.listBorrowedBooks(false).size();
         int availableBefore = library.listAvailableBooks().size();
 
-        int count = 0;
         library.returnBook("Harry Potter");
-        count++;
         library.returnBook("Hitchhiker's guide to the galaxy");
-        count++;
         library.returnBook("It ends with us");
-        count++;
 
-        int borrowedAfter = borrowBookList.size();
+        int borrowedAfter = library.listBorrowedBooks(false).size();
         int availableAfter = library.listAvailableBooks().size();
 
-        assertTrue((borrowedAfter == borrowedbefore - count)
-                && (availableAfter == availableBefore + count));
+        assertTrue((borrowedAfter == borrowedbefore - 3)
+                && (availableAfter == availableBefore + 3));
     }
 
     @Test
     public void testFineAppliedAfterSevenDays() {
         Library library = new Library();
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
 
         for (int i = 0; i < 9; i++) {
             library.advanceDay();
         }
-
+        Book book = library.listBorrowedBooks(false).get(0);
         int lateFee = library.returnBook("Harry Potter");
-        int lateDays = borrowBookList.get(0).getDaysBorrowed() - 6;
+        int lateDays = book.getDaysBorrowed() - 7;
         assertTrue(lateFee == lateDays * 20);
     }
 
     @Test
     public void testExtendFunctionResetsBorrowedDaysToZero() {
         Library library = new Library();
-        ArrayList<Book> borrowBookList = library.borrowBook("Harry Potter");
+        library.borrowBook("Harry Potter");
 
         for (int i = 0; i < 6; i++) {
             library.advanceDay();
@@ -171,6 +162,23 @@ public class LibraryTest {
 
         int day = library.extendTime("Harry Potter");
         assertTrue(day == 0);
+    }
+
+    @Test
+    public void testUserShouldNotBorrowAgainAfterExtendSameDay() {
+        int totalBorrowedBook = 0;
+        Library library = new Library();
+        library.borrowBook("Harry Potter");
+
+        for (int i = 0; i < 6; i++) {
+            library.advanceDay();
+        }
+        library.extendTime("Harry Potter");
+        totalBorrowedBook = library.listBorrowedBooks(false).size();
+        library.borrowBook("Ondskan");
+        totalBorrowedBook = library.listBorrowedBooks(false).size();
+
+        assertTrue(totalBorrowedBook == 1);
     }
 
     @Test
