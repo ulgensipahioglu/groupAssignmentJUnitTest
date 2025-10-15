@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.099" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.068" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire12181922471397096089\surefirebooter-20251014162847327_3.jar C:\Users\Dator\AppData\Local\Temp\surefire12181922471397096089 2025-10-14T16-28-47_215-jvmRun1 surefire-20251014162847327_1tmp surefire_0-20251014162847327_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire2081922151164068332\surefirebooter-20251015095225824_3.jar C:\Users\Dator\AppData\Local\Temp\surefire2081922151164068332 2025-10-15T09-52-25_711-jvmRun1 surefire-20251015095225824_1tmp surefire_0-20251015095225824_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="dev.mygroup.LibraryTest"/>
+    <property name="test" value="dev.mygroup.LibraryTest#testUserCannotBorrowBookMoreThan5Times"/>
     <property name="surefire.test.class.path" value="C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\test-classes;C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\classes;C:\Users\Dator\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Dator\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Dator"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire12181922471397096089\surefirebooter-20251014162847327_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire2081922151164068332\surefirebooter-20251015095225824_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -60,378 +60,29 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testUserCanRetrunBookAsManyBooksPerDay" classname="dev.mygroup.LibraryTest" time="0.036">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
+  <testcase name="testUserCannotBorrowBookMoreThan5Times" classname="dev.mygroup.LibraryTest" time="0.02">
+    <system-out><![CDATA[You have successfully borrowed the book Harry Potter.
 
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
+Date has been updated successfully.Current date: 1
 You have successfully borrowed the book Hitchhiker's guide to the galaxy.
 
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
+Date has been updated successfully.Current date: 1
 You have successfully borrowed the book It ends with us.
 
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You owe us 0 kr in late fees.
-
-Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You owe us 0 kr in late fees.
-
-Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You owe us 0 kr in late fees.
-
-Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-]]></system-out>
-  </testcase>
-  <testcase name="testBooksInStockListSouldDecreaseDuringBorrowing" classname="dev.mygroup.LibraryTest" time="0.002">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-]]></system-out>
-  </testcase>
-  <testcase name="testListBorrowedBooksBy" classname="dev.mygroup.LibraryTest" time="0.0"/>
-  <testcase name="testListBorrowedBooks" classname="dev.mygroup.LibraryTest" time="0.0"/>
-  <testcase name="testExtendFunctionResetsBorrowedDaysToZero" classname="dev.mygroup.LibraryTest" time="0.002">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-You have successfully extended time for this book Harry Potter today.
-]]></system-out>
-  </testcase>
-  <testcase name="testUserCannotBorrowSameBookTitleAgain" classname="dev.mygroup.LibraryTest" time="0.0">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
+Date has been updated successfully.Current date: 1
 You have successfully borrowed the book Ondskan.
 
-Sorry!You can borrow one book per day.
-]]></system-out>
-  </testcase>
-  <testcase name="testFineAppliedAfterSevenDays" classname="dev.mygroup.LibraryTest" time="0.002">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-The book is 9 days late
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You owe us 60 kr in late fees.
-
-]]></system-out>
-  </testcase>
-  <testcase name="testUserCanBorrowOneBookPerDay" classname="dev.mygroup.LibraryTest" time="0.002">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-Sorry!You can borrow one book per day.
-]]></system-out>
-  </testcase>
-  <testcase name="testListAvailableBooks" classname="dev.mygroup.LibraryTest" time="0.0"/>
-  <testcase name="testAdvanceDay" classname="dev.mygroup.LibraryTest" time="0.0"/>
-  <testcase name="testBorrowBookAddsToBorrowedList" classname="dev.mygroup.LibraryTest" time="0.001">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-]]></system-out>
-  </testcase>
-  <testcase name="testReturnBook" classname="dev.mygroup.LibraryTest" time="0.0"/>
-  <testcase name="testMarkBookAsBorrowed" classname="dev.mygroup.LibraryTest" time="0.003">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-]]></system-out>
-  </testcase>
-  <testcase name="testUserCannotBorrowBookMoreThan5Times" classname="dev.mygroup.LibraryTest" time="0.002">
-    <system-out><![CDATA[Title: Harry Potter
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Harry Potter.
-
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Hitchhiker's guide to the galaxy.
-
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book It ends with us.
-
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
-You have successfully borrowed the book Ondskan.
-
-Title: Harry Potter
-Title: Hitchhiker's guide to the galaxy
-Title: It ends with us
-Title: Ondskan
-Title: Tempelriddaren
-Title: Tempelriddaren
-Title: The Great Gatsby
-Title: The Great Gatsby
-Title: The Lord of the Rings
-Title: The Lord of the Rings
+Date has been updated successfully.Current date: 1
 You have successfully borrowed the book Tempelriddaren.
 
+Date has been updated successfully.Current date: 1
 Sorry!You have already borrowed 5 books.
+Title: Harry Potter
+Title: Hitchhiker's guide to the galaxy
+Title: It ends with us
+Title: Ondskan
+Title: Tempelriddaren
+
 ]]></system-out>
   </testcase>
-  <testcase name="testExtendTime" classname="dev.mygroup.LibraryTest" time="0.0"/>
 </testsuite>
