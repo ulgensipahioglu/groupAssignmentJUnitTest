@@ -58,10 +58,9 @@ public class LibraryTest {
         int borrowedBookListAfter = library.listBorrowedBooks(false).size();
         assertTrue((availableStockListAfter == availableStockListBefore - 1)
                 && (borrowedBookListAfter == borrowedBookListBefore + 1));
-
     }
 
-    //1.4:Updating the current day
+    //1.5:Updating the current day
     @Test
     public void testAdvanceDay() {
         Library library = new Library();
@@ -71,22 +70,18 @@ public class LibraryTest {
         assertTrue(currentDay == 1);
     }
 
-    //1.5:The user may only borrow 1 book per day.
+    //1.6:The user may only borrow 1 book per day.
     @Test
     public void testUserCanBorrowOneBookPerDay() {
         Library library = new Library();
         library.borrowBook("Harry Potter");
+        library.borrowBook("Tempelriddaren");
         int totalBorrowedBook = library.listBorrowedBooks(false).size();
-        for (int i = 0; i < totalBorrowedBook; i++) {
-            Book book = library.listBorrowedBooks(false).get(i);
-            if (book.getDaysBorrowed() == 0) {
-                library.borrowBook("Hitchhiker's guide to the galaxy");
-            }
-        }
-        assertTrue(totalBorrowedBook == 1);
+        //assertTrue(totalBorrowedBook == 1);
+        assertEquals(1, totalBorrowedBook);
     }
 
-    //1.5:The user may at most have 5 borrowed books at a time.
+    //1.7:The user may at most have 5 borrowed books at a time.
     @Test
     public void testUserCannotBorrowBookMoreThan5Times() {
         Library library = new Library();
@@ -106,7 +101,7 @@ public class LibraryTest {
         assertEquals(5, borrowdBooklistSize);
     }
 
-    //1.5:The user may only borrow one book per title. .
+    //1.8:The user may only borrow one book per title. .
     @Test
     public void testUserCannotBorrowSameBookTitleAgain() {
         Library library = new Library();
@@ -128,26 +123,27 @@ public class LibraryTest {
         library.advanceDay();
         library.borrowBook("It ends with us");
 
-        int borrowedbefore = library.listBorrowedBooks(false).size();
-        int availableBefore = library.listAvailableBooks().size();
+        int borrowedbeforeRetrun = library.listBorrowedBooks(false).size();
+        int availableBeforeReturn = library.listAvailableBooks().size();
 
         library.returnBook("Harry Potter");
         library.returnBook("Hitchhiker's guide to the galaxy");
         library.returnBook("It ends with us");
 
-        int borrowedAfter = library.listBorrowedBooks(false).size();
-        int availableAfter = library.listAvailableBooks().size();
+        int borrowedAfterReturn = library.listBorrowedBooks(false).size();
+        int availableAfterReturn = library.listAvailableBooks().size();
 
-        assertTrue((borrowedAfter == borrowedbefore - 3)
-                && (availableAfter == availableBefore + 3));
+        assertTrue((borrowedAfterReturn == borrowedbeforeRetrun - 3)
+                && (availableAfterReturn == availableBeforeReturn + 3));
     }
 
+    // 3. For every day the book is late, the user has to pay a fine of 20 kr. 
     @Test
     public void testFineAppliedAfterSevenDays() {
         Library library = new Library();
         library.borrowBook("Harry Potter");
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 10; i++) {
             library.advanceDay();
         }
         Book book = library.listBorrowedBooks(false).get(0);
@@ -156,6 +152,7 @@ public class LibraryTest {
         assertTrue(lateFee == lateDays * 20);
     }
 
+    //The user can use the extend function to reset the book back to 0 days borrowed, this counts as borrowing 1 book.
     @Test
     public void testExtendFunctionResetsBorrowedDaysToZero() {
         Library library = new Library();
@@ -168,6 +165,7 @@ public class LibraryTest {
         int day = library.extendTime("Harry Potter");
         assertTrue(day == 0);
     }
+    //The user should not borrow a book again after extend on same day
 
     @Test
     public void testUserShouldNotBorrowAgainAfterExtendSameDay() {

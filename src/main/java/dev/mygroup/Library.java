@@ -72,7 +72,7 @@ public class Library {
                 break;
             }
         }
-        System.out.println("You owe us " + totalLateFee + " kr in late fees.");
+        System.out.println("Your has been returned the book and " + "you owe us " + totalLateFee + " kr in late fees.");
         System.out.println();
         return totalLateFee;
     }
@@ -97,7 +97,7 @@ public class Library {
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
             if (book.getDaysBorrowed() == 0) {
-                System.out.println("Sorry!You can not extend this book today because you have already borrowed a book today.");
+                System.out.println("Sorry!You can not extend this book because you have already borrowed a book today.");
                 return book.getDaysBorrowed();
             }
         }
@@ -154,9 +154,9 @@ public class Library {
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
             borrowedBooksList.get(i).advanceDay();
-            currentDay = book.getDaysBorrowed();
+            //currentDay = book.getDaysBorrowed();
         }
-        System.out.println("Date has been updated successfully.Current date: " + currentDay);
+        System.out.println("Date has been updated successfully.");
     }
 
     public ArrayList<Book> listAvailableBooks() {
