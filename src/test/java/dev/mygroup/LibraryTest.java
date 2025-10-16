@@ -194,29 +194,4 @@ public class LibraryTest {
 
         assertTrue(totalBorrowedBook == 1);
     }
-
-    @Test
-    public void testExtendTime() {
-
-    }
-
-    @Test
-    public void testListAvailableBooks() {
-
-    }
-
-    @Test
-    public void testListBorrowedBooks() {
-
-    }
-
-    @Test
-    public void testListBorrowedBooksBy() {
-
-    }
-
-    @Test
-    public void testReturnBook() {
-
-    }
 }

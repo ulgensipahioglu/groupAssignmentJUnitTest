@@ -72,7 +72,7 @@ public class Library {
                 break;
             }
         }
-        System.out.println("Your has been returned the book and " + "you owe us " + totalLateFee + " kr in late fees.");
+        System.out.println("You have returned the book and " + "you owe us " + totalLateFee + " kr in late fees.");
         System.out.println();
         return totalLateFee;
     }
@@ -150,11 +150,9 @@ public class Library {
     }
 
     public void advanceDay() {
-        int currentDay = 0;
         for (int i = 0; i < borrowedBooksList.size(); i++) {
             Book book = borrowedBooksList.get(i);
             borrowedBooksList.get(i).advanceDay();
-            //currentDay = book.getDaysBorrowed();
         }
         System.out.println("Date has been updated successfully.");
     }
@@ -169,11 +167,11 @@ public class Library {
     }
 
     private void stockLibrary() {
-        for (int i = 0; i < 2; i++) { //5
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("Harry Potter", "Fantasy", "J.K Rowling");
             booksInStockList.add(book);
         }
-        for (int i = 0; i < 2; i++) { //10
+        for (int i = 0; i < 2; i++) {
             Book book = new Book("Hitchhiker's guide to the galaxy", "Sci-Fi", "Douglas Adams");
             booksInStockList.add(book);
         }
