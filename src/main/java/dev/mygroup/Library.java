@@ -72,7 +72,12 @@ public class Library {
                 break;
             }
         }
-        System.out.println("You have returned the book and " + "you owe us " + totalLateFee + " kr in late fees.");
+        if (totalLateFee == 0) {
+            System.out.println("You have successfully returned the book.");
+        }
+        if (totalLateFee > 0) {
+            System.out.println("You have successfully returned the book and " + "you owe us " + totalLateFee + " kr in late fees.");
+        }
         System.out.println();
         return totalLateFee;
     }
@@ -151,7 +156,7 @@ public class Library {
 
     public void advanceDay() {
         for (int i = 0; i < borrowedBooksList.size(); i++) {
-            Book book = borrowedBooksList.get(i);
+            //Book book = borrowedBooksList.get(i);
             borrowedBooksList.get(i).advanceDay();
         }
         System.out.println("Date has been updated successfully.");

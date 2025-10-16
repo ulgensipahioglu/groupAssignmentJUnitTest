@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class LibraryTest {
 
-    //1.1:The user caanot borrow a book which is not listed in the stock list
+    //1.1:The user cannot borrow a book which is not listed in the stock list
     @Test
     public void testUserShouldBorrowBookFromStockList() {
         Library library = new Library();
