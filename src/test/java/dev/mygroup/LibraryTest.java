@@ -58,8 +58,8 @@ public class LibraryTest {
         library.borrowBook("Harry Potter");
         int availableStockListAfter = library.listAvailableBooks().size();
         int borrowedBookListAfter = library.listBorrowedBooks(false).size();
-        assertTrue((availableStockListAfter == availableStockListBefore - 1)
-                && (borrowedBookListAfter == borrowedBookListBefore + 1));
+        assertEquals(availableStockListAfter, availableStockListBefore - 1);
+        assertEquals(borrowedBookListAfter, borrowedBookListBefore + 1);
     }
 
     //1.5:Updating the current day
@@ -136,8 +136,8 @@ public class LibraryTest {
         int borrowedAfterReturn = library.listBorrowedBooks(false).size();
         int availableAfterReturn = library.listAvailableBooks().size();
 
-        assertTrue((borrowedAfterReturn == borrowedbeforeRetrun - 3)
-                && (availableAfterReturn == availableBeforeReturn + 3));
+        assertEquals(borrowedAfterReturn, borrowedbeforeRetrun - 3);
+        assertEquals(availableAfterReturn, availableBeforeReturn + 3);
     }
 
     // 3. For every day the book is late, the user has to pay a fine of 20 kr. 
