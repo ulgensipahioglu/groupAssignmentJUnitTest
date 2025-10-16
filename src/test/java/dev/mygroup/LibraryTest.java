@@ -12,7 +12,9 @@ public class LibraryTest {
         Library library = new Library();
         library.borrowBook("Abcde");
         int borrowedBook = library.listBorrowedBooks(false).size();
-        assertTrue(borrowedBook == 0);
+        //assertTrue(borrowedBook == 0);
+        assertEquals(0, borrowedBook);
+
     }
 
     // 1.2:The book is marked as borrowed or not
@@ -67,7 +69,8 @@ public class LibraryTest {
         library.borrowBook("Harry Potter");
         library.advanceDay();
         int currentDay = library.listBorrowedBooks(false).get(0).getDaysBorrowed();
-        assertTrue(currentDay == 1);
+        //assertTrue(currentDay == 1);
+        assertEquals(1, currentDay);
     }
 
     //1.6:The user may only borrow 1 book per day.
@@ -146,7 +149,8 @@ public class LibraryTest {
             library.advanceDay();
         }
         int lateFee = library.returnBook("Harry Potter");
-        assertTrue(lateFee == 0);
+        //assertTrue(lateFee == 0);
+        assertEquals(0, lateFee);
     }
 
     @Test
@@ -160,7 +164,8 @@ public class LibraryTest {
         Book book = library.listBorrowedBooks(false).get(0);
         int lateFee = library.returnBook("Harry Potter");
         int lateDays = book.getDaysBorrowed() - 7;
-        assertTrue(lateFee == lateDays * 20);
+        //assertTrue(lateFee == lateDays * 20);
+        assertEquals(lateFee, lateDays * 20);
     }
 
     //The user can use the extend function to reset the book back to 0 days borrowed, this counts as borrowing 1 book.
@@ -174,7 +179,8 @@ public class LibraryTest {
         }
 
         int day = library.extendTime("Harry Potter");
-        assertTrue(day == 0);
+        //assertTrue(day == 0);
+        assertEquals(0, day);
     }
     //The user should not borrow a book again after extend on same day
 
@@ -191,7 +197,6 @@ public class LibraryTest {
         totalBorrowedBook = library.listBorrowedBooks(false).size();
         library.borrowBook("Ondskan");
         totalBorrowedBook = library.listBorrowedBooks(false).size();
-
-        assertTrue(totalBorrowedBook == 1);
+        assertEquals(1, totalBorrowedBook);
     }
 }

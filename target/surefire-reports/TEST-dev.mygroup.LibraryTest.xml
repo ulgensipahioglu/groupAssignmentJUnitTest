@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.063" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.mygroup.LibraryTest" time="0.109" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,9 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645\surefirebooter-20251015130325368_3.jar C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645 2025-10-15T13-03-25_259-jvmRun1 surefire-20251015130325368_1tmp surefire_0-20251015130325368_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Dator\AppData\Local\Temp\surefire14557705983660959586\surefirebooter-20251016110738180_3.jar C:\Users\Dator\AppData\Local\Temp\surefire14557705983660959586 2025-10-16T11-07-37_996-jvmRun1 surefire-20251016110738180_1tmp surefire_0-20251016110738180_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="dev.mygroup.LibraryTest#testBorrowBookFor7DaysStraight"/>
+    <property name="test" value="dev.mygroup.LibraryTest#testUserShouldNotBorrowAgainAfterExtendSameDay"/>
     <property name="surefire.test.class.path" value="C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\test-classes;C:\Users\Dator\Git\Group\groupAssignmentJUnitTest\target\classes;C:\Users\Dator\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Dator\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Dator"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire3069819768824310645\surefirebooter-20251015130325368_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Dator\AppData\Local\Temp\surefire14557705983660959586\surefirebooter-20251016110738180_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -60,7 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testBorrowBookFor7DaysStraight" classname="dev.mygroup.LibraryTest" time="0.019">
+  <testcase name="testUserShouldNotBorrowAgainAfterExtendSameDay" classname="dev.mygroup.LibraryTest" time="0.027">
     <system-out><![CDATA[You have successfully borrowed the book Harry Potter.
 
 Date has been updated successfully.
@@ -69,11 +69,11 @@ Date has been updated successfully.
 Date has been updated successfully.
 Date has been updated successfully.
 Date has been updated successfully.
-Date has been updated successfully.
+You have successfully extended time for this book 'Harry Potter' today.
 Title: Harry Potter
 
-The book is 0 days late
-Your has been returned the book and you owe us 0 kr in late fees.
+Sorry!You can borrow one book per day.
+Title: Harry Potter
 
 ]]></system-out>
   </testcase>

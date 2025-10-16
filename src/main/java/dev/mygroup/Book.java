@@ -69,7 +69,7 @@ public class Book {
             }
      */
     public void returnBook() {
-        this.borrowed = false;
+        this.borrowed = true;
     }
 
     /*

@@ -67,6 +67,7 @@ public class Library {
             if (book.getName().equalsIgnoreCase(title)) {
                 int fee = book.checkLateFee();
                 totalLateFee += fee;
+                book.returnBook();
                 borrowedBooksList.remove(i);
                 booksInStockList.add(book);
                 break;
